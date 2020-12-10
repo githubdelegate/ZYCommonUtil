@@ -42,3 +42,68 @@ public extension String {
         return NSLocalizedString(self, comment: "")
     }
 }
+
+
+public extension Character {
+    var isPureInteger: Bool {
+        let s =  String(self)
+        let scan = Scanner(string: s)
+        var v: Int = 0
+        return scan.scanInt(&v) && scan.isAtEnd
+    }
+}
+
+/// 判断类型
+public extension String {
+    var isValidValidVCard: Bool {
+        let r = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        return r.hasPrefix("BEGIN:VCARD")
+    }
+    
+    var isValidWebUrl: Bool {
+        let r = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        if r.isEmpty {
+            return false
+        }
+        
+        guard let url = URL(string: r) else {
+            return false
+        }
+        return UIApplication.shared.canOpenURL(url)
+    }
+    
+    var isValidPhoneNumber: Bool {
+        let r = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let systemCharArr: [String] = ["(", ")", "+", "*", "-", "#", ";", " ", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        let filterStr: String = r.filter {
+            !systemCharArr.contains(String($0))
+        }
+        
+        if !filterStr.isEmpty {
+            return false
+        }
+        
+        let ns = r.filter {
+            $0.isPureInteger
+        }
+        
+        if ns.count >= 3, ns.count <= 20 {
+            return true
+        }
+        return false
+    }
+    
+    var isValidEmail: Bool {
+        let r = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        let regular = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9-]+\\.[A-Za-z.]{2,10}"
+        let filter: NSPredicate = NSPredicate(format: "SELF MATCHES%@", regular)
+        return filter.evaluate(with: r)
+    }
+}
+
+public extension String {
+    var fileUrl: URL {
+        return URL(fileURLWithPath: self)
+    }
+}
