@@ -1,3 +1,3 @@
 # ZYCommonUtil
 
-A description of this package.
+a helper for project

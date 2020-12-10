@@ -20,7 +20,7 @@ public extension NSAttributedString {
     }
 }
 
-extension String {
+public extension String {
     var url: URL {
         if let u = URL(string: self)  {
             return u
@@ -37,7 +37,7 @@ extension String {
 
 
 // for language
-extension String {
+public extension String {
     var local: String {
         return NSLocalizedString(self, comment: "")
     }
