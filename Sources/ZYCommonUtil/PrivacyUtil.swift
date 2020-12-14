@@ -33,6 +33,10 @@ public class ZYPrivacyUtil {
                     completion(AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == .authorized)
                 }
             }
+        case .authorized:
+            DispatchQueue.main.async {
+                completion(true)
+            }
         default:
             DispatchQueue.main.async {
                 completion(AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == .authorized)
@@ -50,6 +54,10 @@ public class ZYPrivacyUtil {
                     completion(PHPhotoLibrary.authorizationStatus() == .authorized)
                 }
             }
+        case .authorized:
+            DispatchQueue.main.async {
+                completion(true)
+            }
         default:
             DispatchQueue.main.async {
                 completion(false)
@@ -60,6 +68,7 @@ public class ZYPrivacyUtil {
     public class func fetchContactPrivacy(completion: @escaping (_ status: Bool) -> Void) {
         let s = CNContactStore.authorizationStatus(for: .contacts)
         switch s {
+        
         case .denied, .restricted:
             DispatchQueue.main.async {
                 completion(false)
@@ -71,6 +80,10 @@ public class ZYPrivacyUtil {
                         completion(CNContactStore.authorizationStatus(for: .contacts) == .authorized )
                     }
                 }
+            }
+        case .authorized:
+            DispatchQueue.main.async {
+                completion(true)
             }
         default:
             DispatchQueue.main.async {
