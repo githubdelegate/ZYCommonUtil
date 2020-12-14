@@ -13,7 +13,7 @@ import UIKit
 
 public class ZYPrivacyUtil {
     
-    class func jumpToAppPrivacySetting() {
+    public class func jumpToAppPrivacySetting() {
         guard let appSetting = URL(string: UIApplication.openSettingsURLString) else {
             return
         }
@@ -24,7 +24,7 @@ public class ZYPrivacyUtil {
         }
     }
     
-    class func fetchCameraPrivacy(completion: @escaping (_ status: Bool) -> Void) {
+    public class func fetchCameraPrivacy(completion: @escaping (_ status: Bool) -> Void) {
         let granted = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         switch granted {
         case .notDetermined:
@@ -41,7 +41,7 @@ public class ZYPrivacyUtil {
         
     }
     
-    class func fetchPhotoPrivacy(completion: @escaping (_ status: Bool) -> Void) {
+    public class func fetchPhotoPrivacy(completion: @escaping (_ status: Bool) -> Void) {
         let s = PHPhotoLibrary.authorizationStatus()
         switch s {
         case .notDetermined:
@@ -57,7 +57,7 @@ public class ZYPrivacyUtil {
         }
     }
 
-    class func fetchContactPrivacy(completion: @escaping (_ status: Bool) -> Void) {
+    public class func fetchContactPrivacy(completion: @escaping (_ status: Bool) -> Void) {
         let s = CNContactStore.authorizationStatus(for: .contacts)
         switch s {
         case .denied, .restricted:
