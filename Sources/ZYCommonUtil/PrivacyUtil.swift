@@ -11,9 +11,9 @@ import Photos
 import AVFoundation
 import UIKit
 
-class ZYPrivacyUtil {
+public class ZYPrivacyUtil {
     
-    static func jumpToAppPrivacySetting() {
+    class func jumpToAppPrivacySetting() {
         guard let appSetting = URL(string: UIApplication.openSettingsURLString) else {
             return
         }
