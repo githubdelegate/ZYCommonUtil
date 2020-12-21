@@ -37,10 +37,10 @@ public extension UIViewController {
     
     func search(content: String) {
         var s = ""
-        if UIDevice.current.isCurrentEn {
-            s = "https://www.google.com/#q=" + content
-        } else {
+        if UIDevice.current.isCurrentSimpleChina {
             s = "https://www.baidu.com/s?wd=" + content
+        } else {
+            s = "https://www.google.com/#q=" + content
         }
         
         DispatchQueue.main.async {

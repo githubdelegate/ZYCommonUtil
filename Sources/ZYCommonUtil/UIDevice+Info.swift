@@ -45,6 +45,16 @@ public extension UIDevice {
         
         return false
     }
+    
+    var isCurrentSimpleChina: Bool {
+        guard let lans = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String] else {
+            return true
+        }
+        if lans.first == "zh-Hans-CN" {
+            return true
+        }
+        return false
+    }
 }
 
 //public extension UIDevice {
