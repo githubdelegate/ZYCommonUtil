@@ -33,8 +33,7 @@ public extension UIViewController {
             self.present(shareVC, animated: true, completion: nil)
         }
     }
-    
-    
+
     func search(content: String) {
         var s = ""
         if UIDevice.current.isCurrentSimpleChina {
