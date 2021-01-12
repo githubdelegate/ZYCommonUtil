@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-extension UIScreen {
-    var width: Float {
+public extension UIScreen {
+    static var width: Float {
         return Float(UIScreen.main.bounds.size.width)
     }
     
-    var height: Float {
+    static var height: Float {
         return Float(UIScreen.main.bounds.size.height)
     }
 }
