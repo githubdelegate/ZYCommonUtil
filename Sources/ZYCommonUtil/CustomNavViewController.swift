@@ -12,7 +12,7 @@ public protocol NavBarViewDelegate {
     func clickNavBar(type: Int)
 }
 
-public class NavBarView: UIView {
+open class NavBarView: UIView {
     var backBtn: UIButton!
     var titleLbl: UILabel!
     var rightBtn: UIButton!
@@ -83,12 +83,12 @@ public class NavBarView: UIView {
         }
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
-public class CustomNavViewController: UIViewController, NavBarViewDelegate {
+open class CustomNavViewController: UIViewController, NavBarViewDelegate {
     var navView: NavBarView?
 
     override public func viewDidLoad() {
