@@ -13,12 +13,12 @@ public protocol NavBarViewDelegate {
 }
 
 open class NavBarView: UIView {
-    var backBtn: UIButton!
-    var titleLbl: UILabel!
-    var rightBtn: UIButton!
-    var right2Btn: UIButton!
+    open var backBtn: UIButton!
+    open var titleLbl: UILabel!
+    open var rightBtn: UIButton!
+    open var right2Btn: UIButton!
 
-    var delegate: NavBarViewDelegate?
+    open var delegate: NavBarViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
