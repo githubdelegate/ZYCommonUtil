@@ -89,9 +89,9 @@ open class NavBarView: UIView {
 }
 
 open class CustomNavViewController: UIViewController, NavBarViewDelegate {
-    var navView: NavBarView?
+   open var navView: NavBarView?
 
-    override public func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
 
@@ -100,7 +100,7 @@ open class CustomNavViewController: UIViewController, NavBarViewDelegate {
         navView?.delegate = self
     }
 
-    override public func viewSafeAreaInsetsDidChange() {
+    open override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
         print(" navbar = \(view.safeAreaInsets) ")
 
@@ -109,8 +109,24 @@ open class CustomNavViewController: UIViewController, NavBarViewDelegate {
             make.height.equalTo(self.view.safeAreaInsets.top + 44)
         })
     }
+    
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    open override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
 
-    @objc dynamic public func clickNavBar(type: Int) {
+    @objc dynamic open func clickNavBar(type: Int) {
         if type == 1 {
             navigationController?.popToRootViewController(animated: true)
         } else if type == 2 {
