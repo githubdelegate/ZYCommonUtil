@@ -17,7 +17,7 @@ open class NavBarView: UIView {
     open var titleLbl: UILabel!
     open var rightBtn: UIButton!
     open var right2Btn: UIButton!
-
+    open var line: UIView!
     open var delegate: NavBarViewDelegate?
 
     override init(frame: CGRect) {
@@ -65,6 +65,14 @@ open class NavBarView: UIView {
             make.right.equalTo(rightBtn.snp.left).offset(-15)
         }
         right2Btn.addTarget(self, action: #selector(actionClick(btn:)), for: .touchUpInside)
+        
+        line = UIView()
+        line.backgroundColor = UIColor(hexString: "#979797")
+        addSubview(line)
+        line.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
     }
 
     @objc func back() {
