@@ -49,7 +49,8 @@ open class NavBarView: UIView {
         rightBtn.setImage(UIImage(named: "common_home_white"), for: .normal)
         addSubview(rightBtn)
         rightBtn.snp.makeConstraints { make in
-            make.size.equalTo(CGSize(width: 30, height: 30))
+//            make.size.equalTo(CGSize(width: 30, height: 30))
+            make.height.equalTo(30)
             make.bottom.equalTo(-7)
             make.right.equalTo(-15)
         }
