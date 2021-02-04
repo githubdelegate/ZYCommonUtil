@@ -8,7 +8,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-public protocol NavBarViewDelegate {
+public protocol NavBarViewDelegate: UIViewController {
     func clickNavBar(type: Int)
 }
 
@@ -18,7 +18,7 @@ open class NavBarView: UIView {
     open var rightBtn: UIButton!
     open var right2Btn: UIButton!
     open var line: UIView!
-    open var delegate: NavBarViewDelegate?
+    weak open var delegate: NavBarViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
