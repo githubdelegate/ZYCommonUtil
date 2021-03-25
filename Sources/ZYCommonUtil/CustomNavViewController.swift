@@ -18,6 +18,7 @@ open class NavBarAppear {
     open var titleFont: UIFont = UIFont.systemFont(ofSize: 20)
     open var titleColor: UIColor = .black
     open var lineHid: Bool = true
+    open var backImage: String = ""
 }
 
 open class NavBarView: UIView {
@@ -87,6 +88,7 @@ open class NavBarView: UIView {
         titleLbl.font = NavBarAppear.default.titleFont
         titleLbl.textColor = NavBarAppear.default.titleColor
         line.isHidden = NavBarAppear.default.lineHid
+        backBtn.setImage(UIImage(named: NavBarAppear.default.backImage), for: .normal)
     }
 
     @objc func back() {
