@@ -12,6 +12,14 @@ public protocol NavBarViewDelegate: UIViewController {
     func clickNavBar(type: Int)
 }
 
+open class NavBarAppear {
+    static var `default` = NavBarAppear()
+    open var bgColor: UIColor = .white
+    open var titleFont: UIFont = UIFont.systemFont(ofSize: 20)
+    open var titleColor: UIColor = .black
+    open var lineHid: Bool = true
+}
+
 open class NavBarView: UIView {
     open var backBtn: UIButton!
     open var titleLbl: UILabel!
@@ -23,7 +31,7 @@ open class NavBarView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        backgroundColor = .white
+        
 
         backBtn = UIButton(type: .custom)
         backBtn.setImage(UIImage(named: "common_back_white"), for: .normal)
@@ -74,6 +82,11 @@ open class NavBarView: UIView {
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(0.5)
         }
+        
+        backgroundColor = NavBarAppear.default.bgColor
+        titleLbl.font = NavBarAppear.default.titleFont
+        titleLbl.textColor = NavBarAppear.default.titleColor
+        line.isHidden = NavBarAppear.default.lineHid
     }
 
     @objc func back() {
