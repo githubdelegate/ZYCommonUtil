@@ -13,7 +13,7 @@ public protocol NavBarViewDelegate: UIViewController {
 }
 
 open class NavBarAppear {
-    static var `default` = NavBarAppear()
+    public static var `default` = NavBarAppear()
     open var bgColor: UIColor = .white
     open var titleFont: UIFont = UIFont.systemFont(ofSize: 20)
     open var titleColor: UIColor = .black
