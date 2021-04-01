@@ -27,12 +27,14 @@ public extension UIView {
 }
 
 public extension UIViewController {
-    func share(content: String,activity: [UIActivity]?) {
-        let shareVC = UIActivityViewController(activityItems: [content], applicationActivities: activity)
+    func share(content: [Any],activity: [UIActivity]?) {
+        let shareVC = UIActivityViewController(activityItems: content, applicationActivities: activity)
         DispatchQueue.main.async {
             self.present(shareVC, animated: true, completion: nil)
         }
     }
+    
+
 
     func search(content: String) {
         var s = ""
