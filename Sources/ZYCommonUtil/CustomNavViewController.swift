@@ -32,8 +32,6 @@ open class NavBarView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        
-
         backBtn = UIButton(type: .custom)
         backBtn.setImage(UIImage(named: "common_back_white"), for: .normal)
         addSubview(backBtn)
@@ -103,6 +101,10 @@ open class NavBarView: UIView {
                 delegate?.clickNavBar(type: 1)
             } else if btn == right2Btn {
                 delegate?.clickNavBar(type: 2)
+            } else if btn == backBtn {
+                if let vc = next?.next, vc is UIViewController, let v = vc as? UIViewController {
+                    v.navigationController?.popViewController(animated: true)
+                }
             }
         }
     }
