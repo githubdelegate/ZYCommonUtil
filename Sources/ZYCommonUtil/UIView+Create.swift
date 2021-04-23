@@ -20,6 +20,43 @@ public extension UIView {
         backgroundColor = c
         return self
     }
+    
+    @discardableResult
+    func shadowCor(c: UIColor, offx: CGFloat = 0, offy: CGFloat = 2,radius: CGFloat = 10, opc: CGFloat = 1) -> Self {
+        layer.shadowColor = c.cgColor
+        layer.shadowOffset = CGSize(width: offx, height: offy)
+        layer.shadowRadius = radius
+        layer.shadowOpacity = Float(opc)
+        return self
+    }
+}
+
+public extension UILabel {
+    @discardableResult
+    func txt(s: String) -> Self {
+        text = s
+        return self
+    }
+    
+    @discardableResult
+    func txtcol(c: UIColor) -> Self {
+        textColor = c
+        return self
+    }
+    
+    @discardableResult
+    func txtFont(f: CGFloat) -> Self {
+        font = UIFont.systemFont(ofSize: f)
+        return self
+    }
+    
+    @discardableResult
+    func txt(s : String, fon: CGFloat, cor: String) -> Self {
+        textColor = UIColor(hexString: cor)
+        font = UIFont.systemFont(ofSize: fon)
+        text = s
+        return self
+    }
 }
 
 public typealias BtnAction = (UIButton)->()
@@ -92,5 +129,15 @@ public extension UIButton{
         if let action = self.action {
             action(self)
         }
+    }
+}
+
+extension UIButton {
+    @discardableResult
+    func imageRight() -> Self {
+        transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        return self
     }
 }
