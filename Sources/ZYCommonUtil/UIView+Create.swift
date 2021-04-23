@@ -32,6 +32,13 @@ public extension UIView {
 }
 
 public extension UILabel {
+    
+    @discardableResult
+    static func lbl(s : String, fon: CGFloat, cor: String)  -> UILabel {
+        let lbl = UILabel()
+        return lbl.txt(s: s, fon: fon, cor: cor)
+    }
+    
     @discardableResult
     func txt(s: String) -> Self {
         text = s
